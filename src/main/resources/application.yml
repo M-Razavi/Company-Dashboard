@@ -2,6 +2,21 @@ spring:
   profiles:
     active: dev
 
+  thymeleaf:
+    cache: false
+    enabled: true
+    check-template: true
+    check-template-location: true
+    servlet:
+      content-type: text/html
+    encoding: utf-8
+    mode: HTML
+    prefix: classpath:/templates/
+    suffix: .html
+#    mvc:
+#      pathmatch:
+#      use-suffix-pattern: true
+
 logging:
   level:
     #    org.springframework.web: DEBUG
@@ -10,6 +25,8 @@ logging:
     ROOT: info
 #  file: springboot.log
 
+
+thymeleaf:
 ---
 spring:
   profiles: dev

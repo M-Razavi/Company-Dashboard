@@ -2,12 +2,14 @@ package net.mahdirazavi.companydashboard.service;
 
 import net.mahdirazavi.companydashboard.entity.*;
 
-
+import java.util.HashMap;
 import java.util.List;
 
 public interface DashboardService {
 
-    List<CompanyRevenue> getTodayRevenueDash();
+    List<CompanyRevenue> getTodayRevenueDashSimple();
+
+    HashMap<String,Object> getTodayRevenueDash();
 
     List<ProductCategory> getBestCategory();
 
@@ -18,6 +20,7 @@ public interface DashboardService {
     List<EmployeeInformation> getAllEmployee();
 
     EmployeeInformation addEmployee(EmployeeInformation employeeInformation);
+
     EmployeeInformation getEmployee(final String pk);
 
     EmployeeInformation updateEmployee(EmployeeInformation employeeInformation);
