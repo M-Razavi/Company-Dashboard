@@ -66,7 +66,7 @@ public class DashboardServiceImpl implements DashboardService {
             totalRevenue += companyRevenue.getRevenue();
         }
 
-        companyRevenueMap.put("crLables", label.toString());
+        companyRevenueMap.put("crLabels", label.toString());
         companyRevenueMap.put("crRevenue", revenue.toString());
         companyRevenueMap.put("totalExpense", CurrencyFormatter.format(totalExpense));
         companyRevenueMap.put("totalMargin", CurrencyFormatter.format(totalMargin));
