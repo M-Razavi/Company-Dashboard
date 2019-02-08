@@ -1,0 +1,67 @@
+spring:
+  profiles:
+    active: dev
+
+logging:
+  level:
+    #    org.springframework.web: DEBUG
+    #    guru.springframework.controllers: DEBUG
+    org.hibernate: DEBUG
+    ROOT: info
+#  file: springboot.log
+
+---
+spring:
+  profiles: dev
+
+  datasource:
+    url: jdbc:h2:file:~/h2db;DB_CLOSE_ON_EXIT=FALSE;IFEXISTS=TRUE;DB_CLOSE_DELAY=-1;
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+    name: h2db
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: true
+
+server:
+  port: 8090
+
+
+default:
+  course:
+    name: Spring
+    chapterCount: 7
+course:
+  name: Kafka
+  chapterCount: 7
+  rating: 10
+  author: Mahdi Razavi
+
+
+---
+spring:
+  profiles: release
+
+server:
+  port: 8090
+
+default:
+  course:
+    name: Java
+    chapterCount: 7
+course:
+  name: Java
+  chapterCount: 7
+  rating: 10
+  author: Mahdi Razavi
+
