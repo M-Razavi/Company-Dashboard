@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html
-        xmlns:th="http://www.thymeleaf.org">
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+>
 
 <head>
     <meta charset="utf-8">
@@ -395,6 +397,8 @@
         <div class="container">
             <div class="text-center">
                 <small>Copyright © Your Website 2018</small>
+                <span sec:authorize="isAuthenticated()" style=""></span>
+
             </div>
         </div>
     </footer>

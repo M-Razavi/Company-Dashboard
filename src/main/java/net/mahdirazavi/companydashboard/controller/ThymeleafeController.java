@@ -11,7 +11,7 @@ public class ThymeleafeController {
     @Autowired
     DashboardService dashboardService;
 
-    @GetMapping("/")
+    @GetMapping("/dashboard")
     public String getDashDetails(Model model) {
         /**
          * Populate company revenue data
@@ -38,6 +38,6 @@ public class ThymeleafeController {
          */
         model.addAttribute("os", dashboardService.getOrderCollection());
 
-        return "/index";
+        return "/dashboard";
     }
 }
