@@ -25,8 +25,6 @@ logging:
     ROOT: info
 #  file: springboot.log
 
-
-thymeleaf:
 ---
 spring:
   profiles: dev

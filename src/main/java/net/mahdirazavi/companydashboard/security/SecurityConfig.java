@@ -24,7 +24,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/**").permitAll()
+                .antMatchers( "/XYZ").permitAll()
+                .antMatchers("/","/css/**", "/js/**","/vendor/**")
+                .permitAll()
+
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().successHandler(loginSuccessHandler)
@@ -37,8 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/login?logout")
                 .permitAll()
                 .and()
-                .exceptionHandling().accessDeniedHandler(loginAccessDeniedHandler).and().csrf().disable()
-        ;
+                .exceptionHandling().accessDeniedHandler(loginAccessDeniedHandler).and().csrf().disable();
     }
 
     @Override
