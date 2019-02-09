@@ -17,6 +17,17 @@ public class ThymeleafeController {
          * Populate company revenue data
          */
         model.addAttribute("cr", dashboardService.getTodayRevenueDash());
+
+        /**
+         * Populate Employee info
+         */
+        model.addAttribute("ei", dashboardService.getAllEmployee());
+
+        /**
+         * Populate Product Category data
+         */
+        model.addAttribute("bc", dashboardService.getBestCategory());
+
         return "/index";
     }
 }

@@ -76,8 +76,26 @@ public class DashboardServiceImpl implements DashboardService {
     }
 
     @Override
-    public List<ProductCategory> getBestCategory() {
+    public List<ProductCategory> getBestCategorySimple() {
         return productCategoryRepository.findByBestCategory(true);
+    }
+
+    @Override
+    public HashMap<String,Object>  getBestCategory() {
+        HashMap<String, Object> bestProductMap = new HashMap<>();
+
+        List<ProductCategory> BestCategoryList = productCategoryRepository.findByBestCategory(true);
+
+        List<String> label = new ArrayList<>();
+        List<String> percent = new ArrayList<>();
+
+        for (ProductCategory productCategory : BestCategoryList) {
+            label.add(productCategory.getCategoryName());
+            percent.add(String.valueOf(productCategory.getPercentage()));
+        }
+        bestProductMap.put("bcLabels", label.toString());
+        bestProductMap.put("bcPercents", percent.toString());
+        return bestProductMap;
     }
 
     @Override

@@ -11,7 +11,9 @@ public interface DashboardService {
 
     HashMap<String,Object> getTodayRevenueDash();
 
-    List<ProductCategory> getBestCategory();
+    List<ProductCategory> getBestCategorySimple();
+
+    HashMap<String,Object> getBestCategory();
 
     List<OrderReceived> getAllOrderReceived();
 
