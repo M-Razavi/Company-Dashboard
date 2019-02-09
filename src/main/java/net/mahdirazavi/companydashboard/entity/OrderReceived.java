@@ -3,6 +3,7 @@ package net.mahdirazavi.companydashboard.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity

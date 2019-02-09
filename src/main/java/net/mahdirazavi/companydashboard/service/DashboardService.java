@@ -9,15 +9,19 @@ public interface DashboardService {
 
     List<CompanyRevenue> getTodayRevenueDashSimple();
 
-    HashMap<String,Object> getTodayRevenueDash();
+    HashMap<String, Object> getTodayRevenueDash();
 
     List<ProductCategory> getBestCategorySimple();
 
-    HashMap<String,Object> getBestCategory();
+    HashMap<String, Object> getBestCategory();
 
-    List<OrderReceived> getAllOrderReceived();
+    List<OrderReceived> getAllOrderReceivedSimple();
 
-    List<OrderCollectionStatus> getOrderCollection();
+    HashMap<String, Object> getAllOrderReceived();
+
+    List<OrderCollectionStatus> getOrderCollectionSimple();
+
+    HashMap<String, Object> getOrderCollection();
 
     List<EmployeeInformation> getAllEmployee();
 

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>SB Admin - Start Bootstrap Template</title>
+    <title>Company Dashboard</title>
     <!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
@@ -17,10 +17,10 @@
     <link href="css/sb-admin.css" rel="stylesheet">
 </head>
 
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<body class="fixed-nav sticky-footer bg-dark sidenav-toggled" id="page-top">
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+    <a class="navbar-brand" href="index.html">My Company</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -251,14 +251,8 @@
                     <div class="card-body-icon">
                         <i class="fa fa-fw fa-comments"></i>
                     </div>
-                    <div class="mr-5">26 New Messages!</div>
+                    <div class="mr-5"><span th:utext="${os.totalNewOrders}"></span> New Orders!</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
-                    <span class="float-left">View Details</span>
-                    <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-                </a>
             </div>
         </div>
         <div class="col-xl-3 col-sm-6 mb-3">
@@ -267,14 +261,8 @@
                     <div class="card-body-icon">
                         <i class="fa fa-fw fa-list"></i>
                     </div>
-                    <div class="mr-5">11 New Tasks!</div>
+                    <div class="mr-5"><span th:utext="${os.totalRevenue}"></span> revenue This Month</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
-                    <span class="float-left">View Details</span>
-                    <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-                </a>
             </div>
         </div>
         <div class="col-xl-3 col-sm-6 mb-3">
@@ -283,14 +271,8 @@
                     <div class="card-body-icon">
                         <i class="fa fa-fw fa-shopping-cart"></i>
                     </div>
-                    <div class="mr-5">123 New Orders!</div>
+                    <div class="mr-5"><span th:utext="${os.totalShippedOrders}"></span> Order Shipped</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
-                    <span class="float-left">View Details</span>
-                    <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-                </a>
             </div>
         </div>
         <div class="col-xl-3 col-sm-6 mb-3">
@@ -299,14 +281,8 @@
                     <div class="card-body-icon">
                         <i class="fa fa-fw fa-support"></i>
                     </div>
-                    <div class="mr-5">13 New Tickets!</div>
+                    <div class="mr-5"><span th:utext="${os.totalReturnInitiatedOrders}"></span> return Initiated</div>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
-                    <span class="float-left">View Details</span>
-                    <span class="float-right">
-                <i class="fa fa-angle-right"></i>
-              </span>
-                </a>
             </div>
         </div>
     </div>
@@ -404,26 +380,17 @@
 
     <!-- Area Chart Example-->
     <div class="card mb-3">
-        <!--<div class="container-fluid">-->
-        <!--&lt;!&ndash; Breadcrumbs&ndash;&gt;-->
-        <!--<ol class="breadcrumb">-->
-        <!--<li class="breadcrumb-item">-->
-        <!--<a href="#">Dashboard</a>-->
-        <!--</li>-->
-        <!--<li class="breadcrumb-item active">Charts</li>-->
-        <!--</ol>-->
-        <!--</div>-->
-
         <div class="card-header">
             <i class="fa fa-area-chart"></i> Area Chart Example
         </div>
         <div class="card-body">
+            <input type="hidden" th:id="orLabels" th:value="${or.orLabels}"/>
+            <input type="hidden" th:id="orOrders" th:value="${or.orOrders}"/>
             <canvas id="myAreaChart" width="100%" height="30"></canvas>
         </div>
         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
     </div>
-    <!-- /.container-fluid-->
-    <!-- /.content-wrapper-->
+
     <footer class="sticky-footer">
         <div class="container">
             <div class="text-center">

@@ -28,6 +28,16 @@ public class ThymeleafeController {
          */
         model.addAttribute("bc", dashboardService.getBestCategory());
 
+        /**
+         * Populate Order Received data
+         */
+        model.addAttribute("or", dashboardService.getAllOrderReceived());
+
+        /**
+         * Populate Order Status data
+         */
+        model.addAttribute("os", dashboardService.getOrderCollection());
+
         return "/index";
     }
 }

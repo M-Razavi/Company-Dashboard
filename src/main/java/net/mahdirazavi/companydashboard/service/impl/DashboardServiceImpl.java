@@ -2,10 +2,9 @@ package net.mahdirazavi.companydashboard.service.impl;
 
 import net.mahdirazavi.companydashboard.entity.*;
 import net.mahdirazavi.companydashboard.repository.*;
-
-
 import net.mahdirazavi.companydashboard.service.DashboardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.text.NumberFormat;
@@ -37,14 +36,12 @@ public class DashboardServiceImpl implements DashboardService {
     EmployeeInformationRepository employeeInformationRepository;
 
     @Override
-    public List<CompanyRevenue> getTodayRevenueDashSimple()
-    {
+    public List<CompanyRevenue> getTodayRevenueDashSimple() {
         return companyRevenueRepository.findAll();
     }
 
     @Override
-    public HashMap<String,Object> getTodayRevenueDash()
-    {
+    public HashMap<String, Object> getTodayRevenueDash() {
         HashMap<String, Object> companyRevenueMap = new HashMap<>();
 
         List<CompanyRevenue> companyRevenueList = companyRevenueRepository.findAll();
@@ -81,7 +78,7 @@ public class DashboardServiceImpl implements DashboardService {
     }
 
     @Override
-    public HashMap<String,Object>  getBestCategory() {
+    public HashMap<String, Object> getBestCategory() {
         HashMap<String, Object> bestProductMap = new HashMap<>();
 
         List<ProductCategory> BestCategoryList = productCategoryRepository.findByBestCategory(true);
@@ -99,13 +96,61 @@ public class DashboardServiceImpl implements DashboardService {
     }
 
     @Override
-    public List<OrderReceived> getAllOrderReceived() {
+    public List<OrderReceived> getAllOrderReceivedSimple() {
         return orderReceivedRepository.findAll();
     }
 
     @Override
-    public List<OrderCollectionStatus> getOrderCollection() {
+    public HashMap<String, Object> getAllOrderReceived() {
+        List<OrderReceived> orderReceivedList = orderReceivedRepository.findAll(Sort.by("pk"));
+
+        HashMap<String, Object> orderReceivedMap = new HashMap<>();
+
+        List<String> label = new ArrayList<>();
+        List<String> order = new ArrayList<>();
+
+        for (OrderReceived orderReceived : orderReceivedList) {
+            label.add(orderReceived.getDateReceived());
+            order.add(String.valueOf(orderReceived.getOrderReceived()));
+        }
+        orderReceivedMap.put("orLabels", label.toString());
+        orderReceivedMap.put("orOrders", order.toString());
+        return orderReceivedMap;
+    }
+
+    @Override
+    public List<OrderCollectionStatus> getOrderCollectionSimple() {
         return orderCollectionStatusRepository.findAll();
+    }
+
+    @Override
+    public HashMap<String, Object> getOrderCollection() {
+        List<OrderCollectionStatus> orderStatusList = orderCollectionStatusRepository.findAll();
+
+        HashMap<String, Object> orderStatusMap = new HashMap<>();
+
+        int totalNewOrders = 0;
+        double totalRevenue = 0;
+        int totalShippedOrders = 0;
+        int totalReturnInitiatedOrders = 0;
+
+        Locale locale = new Locale("en", "US");
+        NumberFormat CurrencyFormatter = NumberFormat.getCurrencyInstance(locale);
+
+        for (OrderCollectionStatus orderCollectionStatus : orderStatusList) {
+
+            totalNewOrders += orderCollectionStatus.getNewOrders();
+            totalRevenue += orderCollectionStatus.getRevenue();
+            totalShippedOrders += orderCollectionStatus.getShipped();
+            totalReturnInitiatedOrders += orderCollectionStatus.getReturned();
+        }
+
+        orderStatusMap.put("totalNewOrders", totalNewOrders);
+        orderStatusMap.put("totalRevenue", CurrencyFormatter.format(totalRevenue));
+        orderStatusMap.put("totalShippedOrders", totalShippedOrders);
+        orderStatusMap.put("totalReturnInitiatedOrders", totalReturnInitiatedOrders);
+
+        return orderStatusMap;
     }
 
     @Override
