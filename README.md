@@ -1,6 +1,6 @@
 # Company-Dashboard
 
-This is a sample of company website which created with SpringBoot for Backend and [SbAdmin](https://startbootstrap.com/themes/sb-admin-2/) and [Thymeleaf](https://www.thymeleaf.org/).
+This is a sample of company website which created with SpringBoot for backend and [SbAdmin](https://startbootstrap.com/themes/sb-admin-2/) and [Thymeleaf](https://www.thymeleaf.org/) for front-end.
 
 These subject is involed in this project:
 - Using Spring Boot for creating a sample web-application and some REST microservice.
