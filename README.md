@@ -10,6 +10,6 @@ These subject is involed in this project:
 - Security with Spring Security
 - Data storage with Spring data and Hibernate
 
-[[https://raw.githubusercontent.com/M-Razavi/Company-Dashboard/master/README/Screen.png]]
+![Screen](https://raw.githubusercontent.com/M-Razavi/Company-Dashboard/master/README/Screen.png)
 
 
